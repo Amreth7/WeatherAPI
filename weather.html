@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-image: url(https://plus.unsplash.com/premium_photo-1661850976010-4a828535ff70?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aHVtaWRpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60);
+        background-repeat: no-repeat;
+        font-size: 100px;
+        background-size: cover;
+        color:tomato;
+    }
+</style>
+<body>
+    <input type="text" name="" id="city" placeholder="Enter the city:">
+    <button id="btn" onclick="displayresult()">Submit</button><br><br>
+    <marquee id="output" width="100%" direction="right"></marquee>
+    <marquee id="o" width="100%" direction="right"></marquee>
+    <script>
+        function displayresult(){
+            var city= document.getElementById("city").value;
+            var apikey='bcdeb89f221cf57449df2bf273a4a006';
+            fetch('https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+apikey+'&units=metric')
+            .then(response=>response.json())
+            .then(data=>{
+                var t= data['main']['humidity']
+                var s= data['main']['temp']
+                document.getElementById("output").innerHTML=t;
+                document.getElementById("o").innerHTML=s;
+            })
+        }
+    </script>
+</body>
+</html>
